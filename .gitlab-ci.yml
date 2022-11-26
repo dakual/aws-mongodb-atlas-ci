@@ -11,7 +11,13 @@ image:
 
 before_script:
   - terraform --version
+  - sed "s|{{TF_TOKEN}}|$TF_TOKEN|" credentials.tfrc.json > /root/.terraformrc
   - terraform init
+
+cache:
+  key: terraform
+  paths:
+    - .terraform
 
 validate:
   stage: validate
