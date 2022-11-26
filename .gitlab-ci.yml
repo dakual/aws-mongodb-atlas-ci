@@ -1,3 +1,9 @@
+variables:
+  TF_CLOUD_CREDENTIALS: |
+    credentials "app.terraform.io" {
+      token = "${TF_TOKEN}"
+    }
+
 stages:
   - validate
   - plan
@@ -11,8 +17,7 @@ image:
 
 before_script:
   - terraform --version
-  - sed "s|{{TF_TOKEN}}|$TF_TOKEN|" credentials.tfrc.json > /root/.terraform.d
-  - cat /root/.terraform.d/credentials.tfrc.json
+  - sed "s|{{TF_TOKEN}}|$TF_TOKEN|" credentials.tfrc.json > /root/.terraformrc
   - terraform init
 
 cache:
