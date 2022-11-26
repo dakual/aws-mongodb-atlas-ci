@@ -11,13 +11,13 @@ terraform {
     }
   }
 
-  # cloud {
-  #   organization = "dakual"
+  cloud {
+    organization = "dakual"
 
-  #   workspaces {
-  #     name = "mongodb-atlas-demo"
-  #   }
-  # }
+    workspaces {
+      name = "mongodb-atlas-demo"
+    }
+  }
 
   required_version = ">= 1.2.5"
 }
