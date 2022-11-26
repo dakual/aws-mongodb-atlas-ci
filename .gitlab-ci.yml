@@ -33,6 +33,7 @@ validate:
 plan:
   stage: plan
   script:
+    - echo $AWS_ACCOUNT_ID
     - terraform plan -out "tfplan"
   dependencies:
     - validate
