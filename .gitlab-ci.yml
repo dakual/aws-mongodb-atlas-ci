@@ -1,8 +1,4 @@
 variables:
-  AWS_ACCOUNT_ID: "${AWS_ACCOUNT_ID}"
-  ATLAS_PUB_KEY: "${ATLAS_PUB_KEY}"
-  ATLAS_PRIV_KEY: "${ATLAS_PRIV_KEY}"
-  ATLAS_ORG_ID: "${ATLAS_ORG_ID}"
   TF_CLOUD_CREDENTIALS: |
     credentials "app.terraform.io" {
       token = "${TF_TOKEN}"
@@ -15,9 +11,7 @@ stages:
 
 image:
   name: hashicorp/terraform:light
-  entrypoint:
-    - '/usr/bin/env'
-    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  entrypoint: [""]
 
 before_script:
   - terraform --version
