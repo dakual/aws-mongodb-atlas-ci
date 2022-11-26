@@ -11,7 +11,8 @@ image:
 
 before_script:
   - terraform --version
-  - sed "s|{{TF_TOKEN}}|$TF_TOKEN|" credentials.tfrc.json > /root/.terraformrc
+  - sed "s|{{TF_TOKEN}}|$TF_TOKEN|" credentials.tfrc.json > /root/.terraform.d
+  - cat /root/.terraform.d/credentials.tfrc.json
   - terraform init
 
 cache:
