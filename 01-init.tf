@@ -23,19 +23,19 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
+  region  = var.AWS_REGION
 }
 
 provider "mongodbatlas" {
-  public_key  = var.atlas_pub_key
-  private_key = var.atlas_priv_key
+  public_key  = var.ATLAS_PUB_KEY
+  private_key = var.ATLAS_PRIV_KEY
 }
 
 locals {
   name                = "test"
   environment         = "dev"
   cidr                = "10.0.0.0/16"
-  availability_zones  = ["${var.aws_region}a", "${var.aws_region}b"]
+  availability_zones  = ["${var.AWS_REGION}a", "${var.AWS_REGION}b"]
   private_subnets     = ["10.0.0.0/20", "10.0.16.0/20"]
   public_subnets      = ["10.0.32.0/20", "10.0.64.0/20"]
   ami                 = "ami-0a5b5c0ea66ec560d"

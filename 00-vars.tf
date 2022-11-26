@@ -1,53 +1,53 @@
-variable "aws_region" {
-  type = string
+variable "AWS_REGION" {
+  type    = string
   default = "eu-central-1"
 }
 
-variable "aws_account_id" {
+variable "AWS_ACCOUNT_ID" {
   type = string
 }
 
-variable "atlas_org_id" {
+variable "ATLAS_ORG_ID" {
   type        = string
   description = "the ID of your MongoDB Atlas organization"
 }
 
-variable "atlas_pub_key" {
+variable "ATLAS_PUB_KEY" {
   type        = string
   description = "public key for MongoDB Atlas"
 }
 
-variable "atlas_priv_key" {
+variable "ATLAS_PRIV_KEY" {
   type        = string
   description = "private key for MongoDB Atlas"
 }
 
-variable "atlas_region" {
+variable "ATLAS_REGION" {
   type    = string
   default = "EU_CENTRAL_1"
 }
 
-variable "atlas_cidr_block" {
+variable "ATLAS_CIDR_BLOCK" {
   type = string
   default = "192.168.248.0/21"
 }
 
-variable "atlas_project_name" {
+variable "ATLAS_PROJECT_NAME" {
   type    = string
   default = "demo-pr"
 }
 
-variable "atlas_db_name" {
+variable "ATLAS_DB_NAME" {
   type    = string
   default = "demo"
 }
 
-variable "atlas_db_user" {
+variable "ATLAS_DB_USER" {
   type    = string
   default = "admin"
 }
 
-variable "atlas_db_pass" {
+variable "ATLAS_DB_PASS" {
   type    = string
   default = "admin"
 }
