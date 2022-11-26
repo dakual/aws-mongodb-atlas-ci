@@ -1,4 +1,6 @@
 variables:
+  PLAN: plan.tfplan
+  PLAN_FILE_JSON: tfplan.json
   TF_CLOUD_CREDENTIALS: |
     credentials "app.terraform.io" {
       token = "${TF_TOKEN}"
@@ -33,21 +35,32 @@ validate:
 plan:
   stage: plan
   script:
-    - terraform plan -out "tfplan"
+    - terraform plan -out $PLAN 
+    - terraform show -json $PLAN | convert_report > $PLAN_FILE_JSON
   dependencies:
     - validate
   artifacts:
+    reports:
+      terraform: ${PLAN_FILE_JSON}
     paths:
-      - tfplan
+      - ${PLAN}
   tags:
     - dev
 
 apply:
   stage: apply
   script:
-    - terraform apply -input=false "tfplan"
+    - terraform apply $PLAN
   dependencies:
     - plan
+  when: manual
+  tags:
+    - dev
+
+destroy:
+  stage: destroy
+  script:
+    - terraform apply -destroy $PLAN
   when: manual
   tags:
     - dev
