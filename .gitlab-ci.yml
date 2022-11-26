@@ -26,6 +26,7 @@ cache:
 validate:
   stage: validate
   script:
+    - terraform refresh
     - terraform validate
   tags:
     - dev
