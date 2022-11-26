@@ -1,3 +1,13 @@
+default:
+  image:
+    name: hashicorp/terraform:light
+    entrypoint: [""]
+
+  cache:
+    key: "$CI_COMMIT_SHA"
+    paths:
+      - .terraform
+
 variables:
   PLAN: plan.tfplan
   PLAN_FILE_JSON: tfplan.json
@@ -6,28 +16,18 @@ variables:
       token = "${TF_TOKEN}"
     }
 
-stages:
-  - validate
-  - plan
-  - apply
-  - destroy
-
-image:
-  name: hashicorp/terraform:light
-  entrypoint: [""]
-  pull_policy: [always, if-not-present]
-
 before_script:
-  - apk add --update jq
+  - apk --no-cache add jq
   - alias convert_report="jq -r '([.resource_changes[]?.change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
   - terraform --version
   - echo "${TF_CLOUD_CREDENTIALS}" > "${HOME}/.terraformrc"
   - terraform init
 
-cache:
-  key: "$CI_COMMIT_SHA"
-  paths:
-    - .terraform
+stages:
+  - validate
+  - plan
+  - apply
+  - destroy
 
 validate:
   stage: validate
