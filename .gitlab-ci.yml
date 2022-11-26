@@ -17,6 +17,8 @@ validate:
   stage: validate
   script:
     - terraform validate
+  tags:
+    - dev
 
 plan:
   stage: plan
@@ -27,6 +29,8 @@ plan:
   artifacts:
     paths:
       - tfplan
+  tags:
+    - dev
 
 apply:
   stage: apply
@@ -35,3 +39,5 @@ apply:
   dependencies:
     - plan
   when: manual
+  tags:
+    - dev
