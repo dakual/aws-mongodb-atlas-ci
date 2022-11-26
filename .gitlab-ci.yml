@@ -17,6 +17,8 @@ image:
   entrypoint: [""]
 
 before_script:
+  - apk add --update jq
+  - alias convert_report="jq -r '([.resource_changes[]?.change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
   - terraform --version
   - echo "${TF_CLOUD_CREDENTIALS}" > "${HOME}/.terraformrc"
   - terraform init
