@@ -11,12 +11,11 @@ terraform {
     }
   }
 
-  backend "remote" {
-    hostname = "app.terraform.io"
+  cloud {
     organization = "dakual"
 
     workspaces {
-      name = "redacre-aws.ecs"
+      name = "mongodb-atlas-demo"
     }
   }
 
@@ -24,7 +23,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
 }
 
 provider "mongodbatlas" {
@@ -43,4 +42,5 @@ locals {
   instance_type       = "t2.micro"
   key_name            = "mykey"
   key_path            = "~/.aws/pems/mykey.pem"
+  create_ec2          = false
 }
