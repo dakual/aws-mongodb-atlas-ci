@@ -19,14 +19,13 @@ before_script:
   - terraform init
 
 cache:
-  key: terraform
+  key: "$CI_COMMIT_SHA"
   paths:
     - .terraform
 
 validate:
   stage: validate
   script:
-    - terraform refresh
     - terraform validate
   tags:
     - dev
