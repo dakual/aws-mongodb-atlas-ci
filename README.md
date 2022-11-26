@@ -2,10 +2,21 @@
 
 > terraform.tfvars
 ```sh
-aws_account_id = "<aws-account-id>"
-atlas_pub_key  = "<public-key>"
-atlas_priv_key = "<private-key>"
-atlas_org_id   = "<organization-id>"
+AWS_ACCOUNT_ID = "<aws-account-id>"
+ATLAS_PUB_KEY  = "<public-key>"
+ATLAS_PRIV_KEY = "<private-key>"
+ATLAS_ORG_ID   = "<organization-id>"
+```
+
+GitLab Variables
+```sh
+TF_VAR_AWS_ACCOUNT_ID
+TF_VAR_ATLAS_PUB_KEY
+TF_VAR_ATLAS_PRIV_KEY
+TF_VAR_ATLAS_ORG_ID
+TF_TOKEN
+AWS_SECRET_ACCESS_KEY
+AWS_ACCESS_KEY_ID
 ```
 
 Creating infrastructure

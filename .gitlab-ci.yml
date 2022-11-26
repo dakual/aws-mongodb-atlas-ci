@@ -61,6 +61,15 @@ apply:
   tags:
     - dev
 
+destroy-plan:
+  stage: destroy
+  script:
+    - terraform plan -destroy -out=$PLAN
+  rules:
+  when: manual
+  tags:
+    - dev
+    
 destroy:
   stage: destroy
   script:
