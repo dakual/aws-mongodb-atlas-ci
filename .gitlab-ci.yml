@@ -14,10 +14,6 @@ image:
   entrypoint: [""]
 
 before_script:
-  - export ATLAS_ORG_ID=$ATLAS_ORG_ID
-  - export ATLAS_PUB_KEY=$ATLAS_PUB_KEY
-  - export ATLAS_PRIV_KEY=$ATLAS_PRIV_KEY
-  - export AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
   - terraform --version
   - echo "${TF_CLOUD_CREDENTIALS}" > "${HOME}/.terraformrc"
   - terraform init
